@@ -53,6 +53,29 @@ void Colonne(int M[size][size], int r, int c) {
 }
 }
 }
+void Diagonale(int M[size][size], int r, int c) {
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            int diagonale;
+            if (r - i < c) {
+                diagonale = r - i;
+            } else {
+                diagonale = c;
+            }
+
+            for (int k = 0; k < diagonale; k++) {
+                int prossimaR = i + k + 1;
+                int prossimaC = j + k + 1;
+                if (prossimaR < r && prossimaC < c &&
+                    M[i + k][j + k] > M[prossimaR][prossimaC]) {
+                    int temp = M[i + k][j + k];
+                    M[i + k][j + k] = M[prossimaR][prossimaC];
+                    M[prossimaR][prossimaC] = temp;
+                }
+            }
+        }
+    }
+}
 int main() {
     srand(time(NULL));
     int r, c, scelta;
@@ -67,7 +90,8 @@ int main() {
         }
     }
 
-    cout<<"con quale metodo vuoi ordinare la matrice?"<<endl<<"1: per riga"<<endl<<"2: per colonna"<<endl<<"3: intera matrice"<<endl;
+    cout<<"con quale metodo vuoi ordinare la matrice?"<<endl<<
+    "1: per riga"<<endl<<"2: per colonna"<<endl<<"3: in diagonale"<<endl<<"4: intera matrice"<<endl;
     cin>>scelta;
 
     switch(scelta)
@@ -93,6 +117,16 @@ int main() {
     }
     break;
     case 3:
+    Diagonale(M, r, c);
+    cout << setw(10);
+    for (int i = 0; i < r; i++) {
+    cout << endl;
+    for (int j = 0; j < c; j++) {
+        cout << M[i][j] << setw(10);
+    }
+    }
+    break;
+    case 4:
     Sort(M, r, c);
     cout << setw(10);
     for (int i = 0; i < r; i++) {
