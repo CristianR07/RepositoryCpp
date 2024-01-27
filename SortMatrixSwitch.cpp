@@ -10,8 +10,8 @@ void Sort(int M[size][size], int r, int c) {
     int dim = r*c;
 
     for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            temp[l++] = M[i][j];
+        for (int j = 0; j < c; j++, l++) {
+            temp[l] = M[i][j];
         }
     }
     bool flag;
