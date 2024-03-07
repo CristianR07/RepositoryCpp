@@ -56,7 +56,7 @@ int main() {
     for (int i = 0; i < n_persone - 1; i++) {
         for (int j = i + 1; j < n_persone; j++){
             if (strcmp(Persone[i].nome, Persone[j].nome) > 0){
-                swap(Persone[i].nome, Persone[j].nome);
+                swap(Persone[i], Persone[j]);
             }
         }
     }
